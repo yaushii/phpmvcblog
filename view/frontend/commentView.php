@@ -6,8 +6,9 @@
  
  
 <h2>Editer le commentaire</h2>
+
  
-<form action="index.php?action=edit&;id=<?= $commentID ?>" method="post">
+<form action="listPostView.php?action=edit&amp;id=<?= $commentID ?>" method="post">
         <label for="newComment">Nouveau commentaire</label><br />
         <textarea id="newComment" name="newComment" value = ""></textarea>
     </div>
@@ -16,26 +17,6 @@
     </div>
 </form>
 
-<?php
-while ($data = $posts->fetch())
-{
-?>
-    <div class="news">
-        <h3>
-            <?= htmlspecialchars($data['title']) ?>
-            <em>le <?= $data['creation_date_fr'] ?></em>
-        </h3>
-        
-        <p>
-            <?= nl2br(htmlspecialchars($data['content'])) ?>
-            <br />
-            <em><a href="index.php?action=post&;id=<?= $data['id'] ?>">Commentaires</a></em>
-        </p>
-    </div>
-<?php
-}
-$posts->closeCursor();
-?>
 <?php
 $content = ob_get_clean(); ?>
  
