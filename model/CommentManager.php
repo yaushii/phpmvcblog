@@ -6,6 +6,7 @@ require_once("model/Manager.php");
  
 class CommentManager extends Manager
 {
+    // recueper les commentaires du billet choisie
     public function getComments($postId)
     {
         $db = $this->dbConnect();
@@ -14,7 +15,7 @@ class CommentManager extends Manager
  
         return $comments;
     }
- 
+    // insert le nouveau commentaire ecrit
     public function postComment($postId, $author, $comment)
     {
         $db = $this->dbConnect();
@@ -24,12 +25,16 @@ class CommentManager extends Manager
         return $affectedLines;
     }
  
+ 
+    //Edit commentaire
     public function editComment($newComment, $commentID)
     {
         $db = $this->dbConnect();
-        $newComment = $db->prepare('UPDATE comments SET comment = ? WHERE id=?');
-        $affectedComment = $newComment->execute(array($newComment, $commentID)); //ligne 31
-  
+        $nnewComment = $db->prepare('UPDATE comments SET comment = ? WHERE id= ?');
+        $affectedComment = $nnewComment->execute(array($newComment, $commentID));
+ 
         return $affectedComment;
+        
     }
+ 
 }

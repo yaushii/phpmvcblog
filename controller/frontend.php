@@ -40,15 +40,15 @@ function addComment($postId, $author, $comment)
 function edit($newComment, $commentID, $postID)
 {
     $commentManager = new \OpenClassrooms\Blog\Model\CommentManager();
-  
+ 
     $affectedComment = $commentManager->editComment($newComment,$commentID);
-  
-    require('view/frontend/editCommentView.php');
-  
+ 
+    require('view/frontend/commentView.php');
+ 
     if ($affectedComment == false){
         throw new Exception('Impossible d\'editer le commentaire !');
     }
     else {
-        header('Location : index.php?action=post&id=' . $postID);
+        header('Location : index.php?action=post&id=' .$postID);
     }
 }

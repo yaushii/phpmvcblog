@@ -1,14 +1,13 @@
 <?php
 namespace OpenClassrooms\Blog\Model;
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+
  
  
 require_once("model/Manager.php");
  
 class PostManager extends Manager
 {
+// recuperer les 5 derniers billets dans la bdd
     public function getPosts()
     {
         $db = $this->dbConnect();
@@ -16,7 +15,7 @@ class PostManager extends Manager
  
         return $req;
     }
- 
+ // recupere le billet que l'on a choisie de commenté.
     public function getPost($postId)
     {
         $db = $this->dbConnect();
