@@ -30,8 +30,8 @@ class CommentManager extends Manager
     public function editComment($newComment, $commentID)
     {
         $db = $this->dbConnect();
-        $nnewComment = $db->prepare('UPDATE comments SET comment = ? WHERE id= ?');
-        $affectedComment = $nnewComment->execute(array($newComment, $commentID));
+        $newComment = $db->prepare('UPDATE comments SET comment = ? WHERE id= ?');
+        $affectedComment = $newComment->execute(array($newComment, $commentID));
  
         return $affectedComment;
         

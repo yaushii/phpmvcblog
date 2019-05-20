@@ -23,7 +23,15 @@ try {
                     throw new Exception('Tous les champs ne sont pas remplis !');
                 }
             }
-            elseif($_GET['action'] == 'edit'){
+            elseif ($_GET['action'] == 'viewComment') {
+                if (isset($_GET['id']) && $_GET['id'] > 0) {
+                    viewComment();
+                }
+                else {
+                    throw new Exception('Tous les champs ne sont pas remplis !');
+                }
+            }
+            elseif($_GET['action'] == 'editComment'){
                 if (isset($_GET['id']) && $_GET['id'] > 0 && isset($_GET['postID']) && $_GET['postID'] > 0){
                   //if (isset($_POST['newComment'])) {
                     edit($_POST['newComment'], $_GET['id'], $_GET['postID']); //ligne 37
